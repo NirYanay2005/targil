@@ -29,9 +29,12 @@ def sort_numbers(array: list):
 
 def graph_numbers(numbers: list):
     sorted_numbers = sort_numbers(numbers)
-    matplotlib.pyplot.scatter([i for i in range(len(numbers))], numbers, color='red', label='numbers')
-    for i, (xi, yi) in enumerate(zip([i for i in range(len(numbers))], numbers)):
-        plt.annotate(f'({xi}, {yi})', (xi, yi), textcoords="offset points", xytext=(10, 10), ha='center')
+    matplotlib.pyplot.scatter([i for i in range(len(numbers))], numbers,
+                              color='red', label='numbers')
+    for i, (xi, yi) in enumerate(zip([i for i in range(len(numbers))],
+                                     numbers)):
+        plt.annotate(f'({xi}, {yi})', (xi, yi), textcoords="offset points",
+                     xytext=(10, 10), ha='center')
     plt.xlim(0, len(numbers) - 1)
     plt.grid(True)
     plt.show()
@@ -55,7 +58,8 @@ def main():
         if tmp > 0:
             num_of_positive += 1
 
-    print(f"Average = {sum_of_numbers / len(numbers)} || Number of positives = {num_of_positive}")
+    print(f"Average = {sum_of_numbers / len(numbers)} || Number of positives\
+     = {num_of_positive}")
     print(sort_numbers(numbers)) #  didnt know if i can use .sort
     show_graph = input("Do you want to see the numbers on a graph? (Y/N): ")
     if show_graph.lower() == 'y':

@@ -8,7 +8,8 @@ def reverse_n_pi_digits(n: int):
 
 # Hope this is fine....
 def reverse_n_pi_digits_with_pi_calc(n: int):
-    pi = (math.asin(math.sqrt(1 - 0.5 ** 2)) + math.fabs(math.asin(0.5))) * 2
+    pi = (math.asin(math.sqrt(1 - 0.5 ** 2))
+          + math.fabs(math.asin(0.5))) * 2
     return (str(pi)[:n + 1])[::-1]
 
 
