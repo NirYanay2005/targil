@@ -1,0 +1,14 @@
+C:\Users\nirya\OneDrive\Desktop\Private\targil\3\targil\targil\bin\Debug\netcoreapp3.1\targil.exe
+C:\Users\nirya\OneDrive\Desktop\Private\targil\3\targil\targil\bin\Debug\netcoreapp3.1\targil.deps.json
+C:\Users\nirya\OneDrive\Desktop\Private\targil\3\targil\targil\bin\Debug\netcoreapp3.1\targil.runtimeconfig.json
+C:\Users\nirya\OneDrive\Desktop\Private\targil\3\targil\targil\bin\Debug\netcoreapp3.1\targil.runtimeconfig.dev.json
+C:\Users\nirya\OneDrive\Desktop\Private\targil\3\targil\targil\bin\Debug\netcoreapp3.1\targil.dll
+C:\Users\nirya\OneDrive\Desktop\Private\targil\3\targil\targil\bin\Debug\netcoreapp3.1\targil.pdb
+C:\Users\nirya\OneDrive\Desktop\Private\targil\3\targil\targil\obj\Debug\netcoreapp3.1\targil.csproj.AssemblyReference.cache
+C:\Users\nirya\OneDrive\Desktop\Private\targil\3\targil\targil\obj\Debug\netcoreapp3.1\targil.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nirya\OneDrive\Desktop\Private\targil\3\targil\targil\obj\Debug\netcoreapp3.1\targil.AssemblyInfoInputs.cache
+C:\Users\nirya\OneDrive\Desktop\Private\targil\3\targil\targil\obj\Debug\netcoreapp3.1\targil.AssemblyInfo.cs
+C:\Users\nirya\OneDrive\Desktop\Private\targil\3\targil\targil\obj\Debug\netcoreapp3.1\targil.csproj.CoreCompileInputs.cache
+C:\Users\nirya\OneDrive\Desktop\Private\targil\3\targil\targil\obj\Debug\netcoreapp3.1\targil.dll
+C:\Users\nirya\OneDrive\Desktop\Private\targil\3\targil\targil\obj\Debug\netcoreapp3.1\targil.pdb
+C:\Users\nirya\OneDrive\Desktop\Private\targil\3\targil\targil\obj\Debug\netcoreapp3.1\targil.genruntimeconfig.cache
