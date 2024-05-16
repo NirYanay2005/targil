@@ -6,9 +6,13 @@ namespace targil
     {
         static void Main(string[] args)
         {
-            NumericalExpression num = new NumericalExpression(123456789159);
-            Console.WriteLine(num.ToString());
-            Console.WriteLine(num.SumLetters());
+
+            // tesst for part 3.2
+            //NumericalExpression num = new NumericalExpression(26);
+            //Console.WriteLine(num.ToString());
+            //Console.WriteLine(NumericalExpression.SumLetters(num));
+
+            // tesst for part 3.1 
             //LinkedList list = new LinkedList(3);
             //list.Append(1);
             //list.Append(4);
@@ -27,6 +31,7 @@ namespace targil
             //Console.WriteLine(list.GetMaxNode().Value);
             //Console.WriteLine(list.GetMinNode().Value);
 
+            Console.ReadLine();
         }
     }
 }

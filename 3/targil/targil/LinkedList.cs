@@ -84,7 +84,7 @@ namespace targil
             head = head.Next;
             return headValue;
         }
-        public IEnumerator<int> GetEnumerator()
+        public IEnumerator<int> GetEnumerator() // I didnt find a way to make this ToList...
         {
             Node tmp = head;
             while (tmp != null)
@@ -97,7 +97,7 @@ namespace targil
         {
             return GetEnumerator();
         }
-        public IEnumerable<int> ToList()
+        public IEnumerable<int> ToList() 
         {
             Node tmp = head;
             while (tmp != null)
@@ -106,21 +106,28 @@ namespace targil
                 tmp = tmp.Next;
             }
         }
-        public Boolean IsCircular()
+
+        /*
+         * I dont know if it works but my idead was that if it is curcular at some point
+         * the function will have the same node as one and two
+         * 
+         */
+        public bool IsCircular()
         {
             // Dont understand how can it happen to a user, a user adds ints which creates new nodes... No node will be the same.
-            List<Node> lst = new List<Node>();
-            Node tmp = head;
-            while (tmp != null)
+            Node one = head, two = head.Next;
+
+            while (one != null && two != null && two.Next != null)
             {
-                tmp = tmp.Next;
-                if (tmp == head)
+                if (one == two)
                 {
                     return true;
                 }
+                one = one.Next;
+                two = two.Next.Next;
             }
             return false;
-        }
+        } // cheks if function is circular
         private Node getMiddle(Node startNode)
         {
             Node middle = startNode;
@@ -135,7 +142,7 @@ namespace targil
                 }
             }
             return middle;
-        }
+        } // helper funciton to get the middle of a list for. used for sorting
         private Node merge(Node left, Node right)
         {
             Node tmp = new Node(-1, null);
@@ -163,8 +170,8 @@ namespace targil
                 tmp.Next = right;
             }
             return remTmpHead.Next;
-        }
-        public Node sort(Node startNode)
+        } // helper function to merge two lists and sort them.
+        public Node sort(Node startNode) // sort list asceding
         {
             Node left = startNode;
             Node right, tmp;
@@ -181,7 +188,7 @@ namespace targil
             return merge(left, right);
 
         }
-        public Node sort()
+        public Node sort() // overloading sort
         {
             head = sort(head);
             return head;

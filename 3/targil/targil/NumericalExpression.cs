@@ -14,12 +14,16 @@ namespace targil
         private static string[] tens = { "", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
 
         public NumericalExpression(double pNumber) => mainNumber = pNumber;
+        
+        /*
+         * To String gets a number, separate it by the factor values
+         * And by using ReadNumber it builds the complete number for right to left
+         */
         public override string ToString()
         {
             double number = mainNumber;
             int factorCounter = 0;
             StringBuilder numInWords = new StringBuilder();
-
             while (number != 0)
             {
                 if (number % 1000 != 0)
@@ -30,8 +34,16 @@ namespace targil
                 number /= 1000;
                 factorCounter++;
             }
+
             return numInWords.ToString();
         }
+
+        /*
+         * Read Number is an helper function for ToString.
+         * It gets a number max 999
+         * Creates a string, breaks the number down and build the string using the constants at top
+         * Finally it returns the number as a string
+         */
         private string readNumber(int number)
         {
             StringBuilder numInWords = new StringBuilder();
@@ -56,7 +68,7 @@ namespace targil
             }
             return numInWords.ToString();
         }
-        public double GetValue() { return mainNumber; }
+        public double GetValue() { return mainNumber; } 
 
 
         /*
@@ -67,16 +79,16 @@ namespace targil
         public static int SumLetters(double number)
         {
             NumericalExpression tmp = new NumericalExpression(number);
-            return SumLetters(tmp);
+            return SumLetters(tmp); // uses the other funtions so i wont reapet myself
         }
         public static int SumLetters(NumericalExpression numericalExpression)
         {
-            string inWords = numericalExpression.ToString();
-            string[] words = inWords.Split(null);
+            string inWords = numericalExpression.ToString(); // Get as words
+            string[] words = inWords.Split(null); // split for words
             int counter = 0;
             foreach (var word in words)
             {
-                counter += word.Length;
+                counter += word.Length; // count each word separatly
             }
             return counter;
         }
