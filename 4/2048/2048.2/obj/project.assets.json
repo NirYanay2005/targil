@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nirya\\OneDrive\\Desktop\\Private\\targil\\4\\2048\\2048\\2048.csproj",
-      "projectName": "2048",
-      "projectPath": "C:\\Users\\nirya\\OneDrive\\Desktop\\Private\\targil\\4\\2048\\2048\\2048.csproj",
+      "projectUniqueName": "C:\\Users\\nirya\\OneDrive\\Desktop\\Private\\targil\\4\\2048\\2048.2\\2048.2.csproj",
+      "projectName": "2048.2",
+      "projectPath": "C:\\Users\\nirya\\OneDrive\\Desktop\\Private\\targil\\4\\2048\\2048.2\\2048.2.csproj",
       "packagesPath": "C:\\Users\\nirya\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nirya\\OneDrive\\Desktop\\Private\\targil\\4\\2048\\2048\\obj\\",
+      "outputPath": "C:\\Users\\nirya\\OneDrive\\Desktop\\Private\\targil\\4\\2048\\2048.2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nirya\\AppData\\Roaming\\NuGet\\NuGet.Config",

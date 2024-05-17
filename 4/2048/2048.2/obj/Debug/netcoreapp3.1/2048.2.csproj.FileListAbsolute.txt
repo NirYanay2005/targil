@@ -1,0 +1,14 @@
+C:\Users\nirya\OneDrive\Desktop\Private\targil\4\2048.2\2048.2\bin\Debug\netcoreapp3.1\2048.2.exe
+C:\Users\nirya\OneDrive\Desktop\Private\targil\4\2048.2\2048.2\bin\Debug\netcoreapp3.1\2048.2.deps.json
+C:\Users\nirya\OneDrive\Desktop\Private\targil\4\2048.2\2048.2\bin\Debug\netcoreapp3.1\2048.2.runtimeconfig.json
+C:\Users\nirya\OneDrive\Desktop\Private\targil\4\2048.2\2048.2\bin\Debug\netcoreapp3.1\2048.2.runtimeconfig.dev.json
+C:\Users\nirya\OneDrive\Desktop\Private\targil\4\2048.2\2048.2\bin\Debug\netcoreapp3.1\2048.2.dll
+C:\Users\nirya\OneDrive\Desktop\Private\targil\4\2048.2\2048.2\bin\Debug\netcoreapp3.1\2048.2.pdb
+C:\Users\nirya\OneDrive\Desktop\Private\targil\4\2048.2\2048.2\obj\Debug\netcoreapp3.1\2048.2.csproj.AssemblyReference.cache
+C:\Users\nirya\OneDrive\Desktop\Private\targil\4\2048.2\2048.2\obj\Debug\netcoreapp3.1\2048.2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nirya\OneDrive\Desktop\Private\targil\4\2048.2\2048.2\obj\Debug\netcoreapp3.1\2048.2.AssemblyInfoInputs.cache
+C:\Users\nirya\OneDrive\Desktop\Private\targil\4\2048.2\2048.2\obj\Debug\netcoreapp3.1\2048.2.AssemblyInfo.cs
+C:\Users\nirya\OneDrive\Desktop\Private\targil\4\2048.2\2048.2\obj\Debug\netcoreapp3.1\2048.2.csproj.CoreCompileInputs.cache
+C:\Users\nirya\OneDrive\Desktop\Private\targil\4\2048.2\2048.2\obj\Debug\netcoreapp3.1\2048.2.dll
+C:\Users\nirya\OneDrive\Desktop\Private\targil\4\2048.2\2048.2\obj\Debug\netcoreapp3.1\2048.2.pdb
+C:\Users\nirya\OneDrive\Desktop\Private\targil\4\2048.2\2048.2\obj\Debug\netcoreapp3.1\2048.2.genruntimeconfig.cache
