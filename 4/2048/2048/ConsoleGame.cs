@@ -7,12 +7,17 @@ namespace _2048
     class ConsoleGame
     {
         private Game game;
-        
+        private int highScore;
+        private int gamesPlayed;
+        private int totalScore;
         public ConsoleGame()
         {
             game = new Game();
             Console.WriteLine("Welcome To 2048!\n Good Luck!\n\n\n");
             main();
+            highScore = 0;
+            gamesPlayed = 0;
+            totalScore = 0;
         }
 
         public Direction GetDirection()
@@ -39,14 +44,55 @@ namespace _2048
             }
         }
 
+        public bool restart()
+        {
+            string input = "";
+            do
+            {
+                Console.WriteLine("Do you want to go again? (y/n)");
+                input = Console.ReadLine().ToLower();
+            } while (input != "y" && input != "n");
+            return (input.ToLower() == "y");
+
+
+        }
         public void main()
         {
-            while (game.GetGameStatus() != GameStatus.Lose)
+            bool go = true;
+            while (go)
             {
-                Console.WriteLine("Score: ", game.Points);
+                Console.WriteLine();
+                Console.WriteLine("Score: " +  game.Points + "\t\t High Score:" + highScore);
+                Console.WriteLine("-------------------------------------------------\n");
                 game.PrintBoard();
+                Console.WriteLine();
                 game.Move(GetDirection());                
+                if(game.Points > highScore)
+                {
+                    highScore = game.Points;
+                }
+                if (game.GetGameStatus() == GameStatus.Lose)
+                {
+                    totalScore += game.Points;
+                    gamesPlayed++;
+                    go = restart();
+                    if (go)
+                    {
+                        game.Reset();
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n\n\n");
+                        Console.WriteLine("Highest Score: " + highScore);
+                        Console.WriteLine("Games Played: " + gamesPlayed);
+                        Console.WriteLine("Average Score: " + (totalScore / gamesPlayed));
+                        Console.WriteLine("Total Points: " + totalScore);
+                        Console.WriteLine("\n\n Bye!");
+
+                    }
+                }
             }
+
         }
 
 

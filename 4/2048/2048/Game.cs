@@ -33,9 +33,9 @@ namespace _2048
 
         public void PrintBoard()
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < Constants.SIZE; i++)
             {
-                for (int j = 0; j < 4; j++)
+                for (int j = 0; j < Constants.SIZE; j++)
                 {
                     Console.Write(string.Format("{0,4} ", board.Data[i, j]));
                 }
@@ -60,7 +60,11 @@ namespace _2048
             }
             else
             {
-                points += board.Move(direction);
+                for (int i = 0; i < 2; i++)
+                {
+                    points += board.Move(direction);
+
+                }
                 if (board.isGameOver())
                 {
                     gameStatus = GameStatus.Lose;
@@ -68,7 +72,14 @@ namespace _2048
                 }
                 else
                 {
-                    board.AddRandom();
+                    if (board.BoardIsFull())
+                    {
+                        Console.WriteLine("Invalid Move!");
+                    }
+                    else
+                    {
+                        board.AddRandom();
+                    }
                 }
             }
         }
