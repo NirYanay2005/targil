@@ -6,7 +6,7 @@ namespace _2048
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            ConsoleGame consoleGame = new ConsoleGame();
         }
     }
 }

@@ -17,21 +17,35 @@ namespace _2048
 
         public Direction GetDirection()
         {
-            Direction direction;
             string input = "";
-            bool good = false;
-            do
+            while (true)
             {
                 Console.WriteLine("Enter The Direction You Want (U=UP, D=DOWM, R=RIGHT, L=LEFT):");
-                input = Console.ReadLine(input);
-            }while(!good);
+                input = Console.ReadLine().ToLower();
+                switch (input)
+                {
+                    case "u":
+                        return Direction.UP;
+                    case "d":
+                        return Direction.DOWN;
+                    case "r":
+                        return Direction.RIGHT;
+                    case "l":
+                        return Direction.LEFT;
+                    default:
+                        Console.WriteLine("Please Enter a Vaild Letter!");
+                        break;
+                }
+            }
         }
+
         public void main()
         {
             while (game.GetGameStatus() != GameStatus.Lose)
             {
+                Console.WriteLine("Score: ", game.Points);
                 game.PrintBoard();
-
+                game.Move(GetDirection());                
             }
         }
 

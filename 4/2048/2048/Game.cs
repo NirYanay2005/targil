@@ -15,6 +15,7 @@ namespace _2048
             board = new Board();
             gameStatus = GameStatus.Idle;
             points = 0;
+            board.StartBoard();
         }
 
         public GameStatus GetGameStatus() { return gameStatus; }
@@ -38,7 +39,17 @@ namespace _2048
                 {
                     Console.Write(string.Format("{0,4} ", board.Data[i, j]));
                 }
+                Console.WriteLine();
             }
+        }
+
+        public void Reset()
+        {
+            board = new Board();
+            points = 0;
+            gameStatus = GameStatus.Idle;
+            board.StartBoard();
+
         }
 
         public void Move(Direction direction)
@@ -52,7 +63,12 @@ namespace _2048
                 points += board.Move(direction);
                 if (board.isGameOver())
                 {
+                    gameStatus = GameStatus.Lose;
                     Console.WriteLine("You Lost!");
+                }
+                else
+                {
+                    board.AddRandom();
                 }
             }
         }

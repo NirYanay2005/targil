@@ -12,6 +12,7 @@ namespace _2048
         public Board()
         {
             data = new int[4, 4];
+            
         }
         public int[,] Data
         {
@@ -77,9 +78,10 @@ namespace _2048
                 }
             }
             return false;
+            
         }
 
-        private void AddRandom()
+        public void AddRandom()
         {
             bool success = false;
             int row = -1 , col = -1;
