@@ -1,4 +1,5 @@
-def is_sorted_polyndrom(polyndrom: str):  # ignoring Upper/lower cases as questions does not specify
+# ignoring Upper/lower cases as questions does not specify
+def is_sorted_polyndrom(polyndrom: str):
     last_int = -1
     last_chr_value = 0
     for chr in polyndrom[:len(polyndrom) // 2 + 1]:

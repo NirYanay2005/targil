@@ -30,15 +30,29 @@ namespace _2048
                 points = value;
             }
         }
+        public ConsoleColor GetColor(int num)
+        {
+            ConsoleColor[] colors = { ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Yellow, ConsoleColor.Blue, ConsoleColor.Magenta };
+            return colors[((int)Math.Log(num, 2) - 1) % 5];
+        }
 
         public void PrintBoard()
         {
+            Console.WriteLine(string.Format(new string('-', 29)));
             for (int i = 0; i < Constants.SIZE; i++)
             {
                 for (int j = 0; j < Constants.SIZE; j++)
                 {
-                    Console.Write(string.Format("{0,4} ", board.Data[i, j]));
+                    Console.Write("|");
+                    if (board.Data[i, j] != 0)
+                    {
+                        Console.ForegroundColor = GetColor(board.Data[i, j]);
+                    }
+                    Console.Write(string.Format("{0,4}  ", board.Data[i, j]));
+                    Console.ForegroundColor = ConsoleColor.White;
+
                 }
+                Console.Write(string.Format("|\n" + new string('-', 29)));
                 Console.WriteLine();
             }
         }
@@ -60,11 +74,9 @@ namespace _2048
             }
             else
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    points += board.Move(direction);
 
-                }
+                points += board.Move(direction);
+
                 if (board.isGameOver())
                 {
                     gameStatus = GameStatus.Lose;

@@ -8,7 +8,7 @@ namespace targil
     {
         
         private double mainNumber;
-        private static string[] factor = { "", " thousands,", " millions,", " billions," };
+        private static string[] factor = { "", " thousands,", " millions,", " billions," ," trillions,"};
         private static string[] singles = { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
         private static string[] tensWithOnes = { "", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
         private static string[] tens = { "", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
@@ -84,7 +84,7 @@ namespace targil
         public static int SumLetters(NumericalExpression numericalExpression)
         {
             string inWords = numericalExpression.ToString(); // Get as words
-            string[] words = inWords.Split(null); // split for words
+            string[] words = inWords.Split(null); // spit for words
             int counter = 0;
             foreach (var word in words)
             {

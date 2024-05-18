@@ -1,6 +1,6 @@
 import math
 
-
+# I used an equation that i found online for finding triplets
 def pythagorean_triplet_by_sum(sum: int):
     triplets = []
     for s in range(2, sum // 3):

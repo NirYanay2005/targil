@@ -29,21 +29,24 @@ namespace _2048
 
         public void StartBoard()
         {
-
-            data[random.Next(0, Constants.SIZE), random.Next(0, Constants.SIZE)] = random.Next(1, 3) * 2;
-            data[random.Next(0, Constants.SIZE), random.Next(0, Constants.SIZE)] = random.Next(1, 3) * 2;
-
+            int tmpRow = random.Next(0, Constants.SIZE), tmpCol = random.Next(0, Constants.SIZE);
+            data[tmpRow, tmpCol] = random.Next(1, 3) * 2;
+            do { 
+                tmpRow = random.Next(0, Constants.SIZE);
+                tmpCol = random.Next(0, Constants.SIZE);
+            } while (data[tmpRow, tmpCol] != 0);
+            data[tmpRow, tmpCol] = random.Next(1, 3) * 2;
         }
 
         
 
         public bool BoardIsFull() 
         {
-            for (int i = 0; i < Constants.SIZE; i++)
+            for (int row = 0; row < Constants.SIZE; row++)
             {
-                for (int j = 0; j < Constants.SIZE; j++)
+                for (int col = 0; col < Constants.SIZE; col++)
                 {
-                    if(data[i,j] == 0)
+                    if(data[row,col] == 0)
                     {
                         return false;
                     }
@@ -60,27 +63,18 @@ namespace _2048
                     try { if (data[row, col] == data[row + 1, col]) { return true; } }
                     catch (IndexOutOfRangeException) {}
                     try { if (data[row, col] == data[row - 1, col]) { return true; } }
-                    catch (IndexOutOfRangeException) { }
+                    catch (IndexOutOfRangeException) {}
                     try { if (data[row, col] == data[row, col + 1]) { return true; } }
-                    catch (IndexOutOfRangeException) { }
+                    catch (IndexOutOfRangeException) {}
                     try { if (data[row, col] == data[row, col - 1]) { return true; } }
-                    catch (IndexOutOfRangeException) { }
+                    catch (IndexOutOfRangeException) {}
                 }
             }
             return false;
         }
         public bool isGameOver()
         {
-            if (BoardIsFull())
-            {
-                if (!CanMakeMove())
-                {
-                    
-                    return true;
-                }
-            }
-            return false;
-            
+            return (BoardIsFull() && !CanMakeMove());
         }
 
         public void AddRandom()
@@ -123,31 +117,49 @@ namespace _2048
 
         public int Move(Direction direction)
         {
-            int rowsChange = 0, colsChange = 0, totalPoints = 0;
+            int rowsChange = 0, colsChange = 0, totalPoints = 0, rowStart = 0, colStart = 0, rowEnd = Constants.SIZE, colEnd = Constants.SIZE, rowMovment = 1, colMovment = 1;
             switch (direction)
             {
                 case Direction.UP:
-                    rowsChange--;
+                    rowsChange = -1;
+                    rowMovment = -1;
+                    rowStart = Constants.SIZE - 1;
+                    rowEnd = -1;
                     break;
                 case Direction.DOWN:
-                    rowsChange++;
-                    break;
-                case Direction.RIGHT:
-                    colsChange++;
+                    rowsChange = 1;
+                    rowMovment = 1;
+                    rowStart = 0;
+                    rowEnd = Constants.SIZE ;
                     break;
                 case Direction.LEFT:
-                    colsChange--;
+                    colStart = 0;
+                    colEnd = Constants.SIZE ;
+                    colMovment = 1;
+                    colsChange = -1;
+
+                    break;
+                case Direction.RIGHT:
+                    colStart = Constants.SIZE - 1;
+                    colEnd = -1;
+                    colMovment = -1;
+                    colsChange = 1;
                     break;
             }
 
-            for (int row = 0; row < Constants.SIZE; row++)
+            for (int row = rowStart; row != rowEnd; row += rowMovment)
             {
-                for (int col = 0; col < Constants.SIZE; col++)
+                for (int col = colStart; col != colEnd; col += colMovment)
                 {
-                    int currentRow = row, currentCol = col;
+                    int tmpRow = 0, tmpCol = 0, currentRow = 0, currentCol= 0;
+                    tmpRow = row;
+                    tmpCol = col;
+                    currentRow = tmpRow;
+                    currentCol = tmpCol;
+                    Console.WriteLine("(" + tmpRow + "," + tmpCol + ")");
+
                     if (data[currentRow, currentCol] == 0)
                         continue;
-
                     while (currentRow + rowsChange >= 0 && currentRow + rowsChange < Constants.SIZE && currentCol + colsChange >= 0 && currentCol + colsChange < Constants.SIZE &&
                            data[currentRow + rowsChange, currentCol + colsChange] == 0)
                     {
@@ -155,14 +167,14 @@ namespace _2048
                         currentCol += colsChange;
                     }
 
-                    if (currentRow != row || currentCol != col)
+                    if (currentRow != tmpRow || currentCol != tmpCol)
                     {
-                        totalPoints += MakeMove(new int[] { row, col }, new int[] { currentRow, currentCol });
+                        MakeMove(new int[] { tmpRow, tmpCol }, new int[] { currentRow, currentCol });
+                        tmpRow = currentRow;
+                        tmpCol = currentCol;
                     }
-                    else
-                    {
-                        totalPoints += MakeMove(new int[] { row, col }, new int[] { row + rowsChange, col + colsChange });
-                    }
+                    totalPoints += MakeMove(new int[] { tmpRow, tmpCol }, new int[] { tmpRow + rowsChange, tmpCol + colsChange });
+
                 }
             }
             return totalPoints;
