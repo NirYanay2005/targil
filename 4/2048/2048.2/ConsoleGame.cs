@@ -20,7 +20,7 @@ namespace _2048
             totalScore = 0;
         }
 
-        public Direction GetDirection()
+        public Direction GetDirection() // gets direction from user
         {
             string input = "";
             while (true)
@@ -44,7 +44,7 @@ namespace _2048
             }
         }
 
-        public bool restart()
+        public bool restart() //asks user if he wants to restart
         {
             string input = "";
             do
@@ -56,7 +56,7 @@ namespace _2048
 
 
         }
-        public void main()
+        public void main() // basicly formating...
         {
             bool go = true;
             while (go)
@@ -80,7 +80,7 @@ namespace _2048
                     {
                         game.Reset();
                     }
-                    else
+                    else //Some stats
                     {
                         Console.WriteLine("\n\n\n");
                         Console.WriteLine("Highest Score: " + highScore);

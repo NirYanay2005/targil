@@ -27,20 +27,20 @@ namespace _2048
             }
         }
 
-        public void StartBoard()
+        public void StartBoard() // starts the board with two randoms
         {
             int tmpRow = random.Next(0, Constants.SIZE), tmpCol = random.Next(0, Constants.SIZE);
             data[tmpRow, tmpCol] = random.Next(1, 3) * 2;
             do { 
                 tmpRow = random.Next(0, Constants.SIZE);
                 tmpCol = random.Next(0, Constants.SIZE);
-            } while (data[tmpRow, tmpCol] != 0);
+            } while (data[tmpRow, tmpCol] != 0); // makes sure to not pick the same one twice
             data[tmpRow, tmpCol] = random.Next(1, 3) * 2;
         }
 
         
 
-        public bool BoardIsFull() 
+        public bool BoardIsFull() // checks if board is full
         {
             for (int row = 0; row < Constants.SIZE; row++)
             {
@@ -54,7 +54,7 @@ namespace _2048
             }
             return true;
         }
-        private bool CanMakeMove()
+        private bool CanMakeMove() // checks if there is a possible merge
         {
             for (int row = 0; row < Constants.SIZE; row++)
             {
@@ -72,12 +72,12 @@ namespace _2048
             }
             return false;
         }
-        public bool isGameOver()
-        {
+        public bool isGameOver() // if board is full and cant make move = game over
+        {// i chose to leave 2048 out of it beacuse i thought the game is better this way....
             return (BoardIsFull() && !CanMakeMove());
         }
 
-        public void AddRandom()
+        public void AddRandom() // adds random at empty
         {
             bool success = false;
             int row = -1 , col = -1;
@@ -85,14 +85,14 @@ namespace _2048
             {
                 row = random.Next(0, Constants.SIZE);
                 col = random.Next(0, Constants.SIZE);
-                if (data[row,col] == 0)
+                if (data[row,col] == 0) // checks if indeed empty
                 {
                     data[row, col] = random.Next(1, 3) * 2;
                     success = true;
                 }
             } while (!success);
         }
-        public int MakeMove(int[] src, int[] dst)
+        public int MakeMove(int[] src, int[] dst) // actual move/merging making
         {
             if (dst[0] >= Constants.SIZE || dst[1] >= Constants.SIZE || dst[0] < 0 || dst[1] < 0)
             {
@@ -115,10 +115,10 @@ namespace _2048
             return 0;
         }
 
-        public int Move(Direction direction)
+        public int Move(Direction direction, bool doMergs) // move algorithem
         {
             int rowsChange = 0, colsChange = 0, totalPoints = 0, rowStart = 0, colStart = 0, rowEnd = Constants.SIZE, colEnd = Constants.SIZE, rowMovment = 1, colMovment = 1;
-            switch (direction)
+            switch (direction) // Decide how to move across board and where to move numbers
             {
                 case Direction.UP:
                     rowsChange = -1;
@@ -147,7 +147,7 @@ namespace _2048
                     break;
             }
 
-            for (int row = rowStart; row != rowEnd; row += rowMovment)
+            for (int row = rowStart; row != rowEnd; row += rowMovment) // scans the entire board
             {
                 for (int col = colStart; col != colEnd; col += colMovment)
                 {
@@ -157,22 +157,26 @@ namespace _2048
                     currentRow = tmpRow;
                     currentCol = tmpCol;
 
-                    if (data[currentRow, currentCol] == 0)
+                    if (data[currentRow, currentCol] == 0) // ignores empty spaces
                         continue;
-                    while (currentRow + rowsChange >= 0 && currentRow + rowsChange < Constants.SIZE && currentCol + colsChange >= 0 && currentCol + colsChange < Constants.SIZE &&
-                           data[currentRow + rowsChange, currentCol + colsChange] == 0)
+                    while (currentRow + rowsChange >= 0 && currentRow + rowsChange < Constants.SIZE &&
+                        currentCol + colsChange >= 0 && currentCol + colsChange < Constants.SIZE &&
+                           data[currentRow + rowsChange, currentCol + colsChange] == 0) // moves numbers till blocked
                     {
                         currentRow += rowsChange;
                         currentCol += colsChange;
                     }
 
-                    if (currentRow != tmpRow || currentCol != tmpCol)
+                    if (currentRow != tmpRow || currentCol != tmpCol) // moves if indeed they need
                     {
                         MakeMove(new int[] { tmpRow, tmpCol }, new int[] { currentRow, currentCol });
                         tmpRow = currentRow;
                         tmpCol = currentCol;
                     }
-                    totalPoints += MakeMove(new int[] { tmpRow, tmpCol }, new int[] { tmpRow + rowsChange, tmpCol + colsChange });
+                    if (doMergs) // merging if needed
+                    {
+                        totalPoints += MakeMove(new int[] { tmpRow, tmpCol }, new int[] { tmpRow + rowsChange, tmpCol + colsChange });
+                    }
 
                 }
             }

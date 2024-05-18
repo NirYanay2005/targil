@@ -19,7 +19,7 @@ namespace _2048
         }
 
         public GameStatus GetGameStatus() { return gameStatus; }
-        public int Points
+        public int Points 
         {
             get
             {
@@ -30,13 +30,13 @@ namespace _2048
                 points = value;
             }
         }
-        public ConsoleColor GetColor(int num)
+        public ConsoleColor GetColor(int num) // gets the color
         {
             ConsoleColor[] colors = { ConsoleColor.Red, ConsoleColor.Green, ConsoleColor.Yellow, ConsoleColor.Blue, ConsoleColor.Magenta };
             return colors[((int)Math.Log(num, 2) - 1) % 5];
         }
 
-        public void PrintBoard()
+        public void PrintBoard() // prints the board nicely
         {
             Console.WriteLine(string.Format(new string('-', 29)));
             for (int i = 0; i < Constants.SIZE; i++)
@@ -57,7 +57,7 @@ namespace _2048
             }
         }
 
-        public void Reset()
+        public void Reset() // restarts game
         {
             board = new Board();
             points = 0;
@@ -66,7 +66,7 @@ namespace _2048
 
         }
 
-        public void Move(Direction direction)
+        public void Move(Direction direction) // Main Move Handler
         {
             if (gameStatus == GameStatus.Lose)
             {
@@ -75,7 +75,8 @@ namespace _2048
             else
             {
 
-                points += board.Move(direction);
+                points += board.Move(direction, true);
+                points += board.Move(direction, false); // Making sure everything move as far as it could yet not merging again
 
                 if (board.isGameOver())
                 {
