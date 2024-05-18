@@ -156,7 +156,6 @@ namespace _2048
                     tmpCol = col;
                     currentRow = tmpRow;
                     currentCol = tmpCol;
-                    Console.WriteLine("(" + tmpRow + "," + tmpCol + ")");
 
                     if (data[currentRow, currentCol] == 0)
                         continue;
